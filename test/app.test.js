@@ -1,6 +1,5 @@
 const assert = require("assert");
 const request = require("supertest");
-const { response } = require("../app");
 const app = require("../app");
 
 describe("The express app", () => {
