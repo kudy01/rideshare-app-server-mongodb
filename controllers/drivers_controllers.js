@@ -6,7 +6,9 @@ const greeting = (req, res) => {
 
 const createDriver = (req, res) => {
   const driverProps = req.body;
-  Driver.create(driverProps).then((driver) => res.send(driver));
+  Driver.create(driverProps)
+    .then((driver) => res.send(driver))
+    .catch((err) => res.status(404).json("Error"));
 };
 
 module.exports = {
