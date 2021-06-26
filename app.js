@@ -3,10 +3,12 @@ const routes = require("./routes/routes");
 const app = express();
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/muber", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+if (process.env.NODE_ENV !== "test") {
+  mongoose.connect("mongodb://localhost/muber", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 app.use(express.json());
 
