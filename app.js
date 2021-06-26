@@ -1,6 +1,9 @@
 const express = require("express");
 const routes = require("./routes/routes");
 const app = express();
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/muber");
 
 app.use(express.json());
 
