@@ -13,8 +13,10 @@ if (process.env.NODE_ENV !== "test") {
 app.use(express.json());
 
 routes(app);
-// app.post("./api", (req, res) => {});
-// app.put("./api", (req, res) => {});
-// app.delete("./api", (req, res) => {});
+// after going through all routes the middleware would run for error handling
+//middleware is used instead of catch() to follow DRY principle
+app.use((err, req, res, next) => {
+  res.status(422).send({ error: err.message });
+});
 
 module.exports = app;
