@@ -23,8 +23,22 @@ const editDriver = (req, res, next) => {
     .catch(next);
 };
 
+const deleteDriver = (req, res, next) => {
+  const driverId = req.params.id;
+
+  Driver.findByIdAndRemove(
+    { _id: driverId },
+    {
+      useFindAndModify: false,
+    }
+  )
+    .then((driver) => res.status(204).send(driver))
+    .catch(next);
+};
+
 module.exports = {
   createDriver,
   greeting,
   editDriver,
+  deleteDriver,
 };
