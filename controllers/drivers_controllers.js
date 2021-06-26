@@ -11,7 +11,20 @@ const createDriver = (req, res, next) => {
     .catch(next);
 };
 
+const editDriver = (req, res, next) => {
+  const driverId = req.params.id;
+  const driverProps = req.body;
+
+  Driver.findByIdAndUpdate({ _id: driverId }, driverProps, {
+    useFindAndModify: false,
+  })
+    .then(() => Driver.findById({ _id: driverId }))
+    .then((driver) => res.send(driver))
+    .catch(next);
+};
+
 module.exports = {
   createDriver,
   greeting,
+  editDriver,
 };
