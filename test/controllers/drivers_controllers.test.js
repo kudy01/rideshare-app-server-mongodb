@@ -20,6 +20,16 @@ describe("Drivers controller", () => {
     });
   });
 
+  it("Post to /api/drivers requires an email", (done) => {
+    request(app)
+      .post("/api/drivers")
+      .send({})
+      .end((err, res) => {
+        assert(res.body.error);
+        done();
+      });
+  });
+
   it("Put to /api/drivers/:id can update a record", (done) => {
     const driver = new Driver({ email: "test@test.com", driving: false });
 
