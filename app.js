@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== "test") {
   mongoose.connect("mongodb://localhost/muber", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   });
 }
 
