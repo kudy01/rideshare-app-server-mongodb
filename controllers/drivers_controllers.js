@@ -5,7 +5,7 @@ const greeting = (req, res) => {
 };
 
 const getNearbyDrivers = (req, res, next) => {
-  const { lng, lat } = req.query;
+  const { lng = 0, lat = 0 } = req.query;
 
   Driver.aggregate([
     {
